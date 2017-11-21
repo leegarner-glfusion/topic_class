@@ -822,8 +822,8 @@ class Topic
         $result = DB_query($sql);
         while ($A = DB_fetchArray($result, false)) {
             $sql = "UPDATE {$_TABLES['stories']}
-                    SET tid='".$A['alternate_tid']."', alternate_tid=NULL
-                    WHERE sid='".$A['sid']."'";
+                    SET tid='".DB_escapeString($A['alternate_tid'])."', alternate_tid=NULL
+                    WHERE sid='".DB_escapeString($A['sid'])."'";
             DB_query($sql);
         }
 
